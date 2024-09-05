@@ -1,46 +1,59 @@
-// L01.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// L01.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
-#include "Header.h"
+#include "AthleteStorage.h"
 
-using namespace std;
-
-#include "MyClass.h"
-
-MyClass* f()
-{
-	MyClass o(222);
-	return new MyClass(111);
+void showMenu() {
+    std::cout << "1. Добавить спортсмена\n";
+    std::cout << "2. Показать всех спортсменов\n";
+    std::cout << "3. Считать спортсменов из файла\n";
+    std::cout << "4. Записать спортсменов в файл\n";
+    std::cout << "5. Очистить список спортсменов\n";
+    std::cout << "0. Выход\n";
 }
 
-//extern int gI;
-//int& f(int);
+int main() {
+    AthleteStorage storage;
+    int choice;
+    std::string filename;
 
-// static double i = 0;
+    do {
+        showMenu();
+        std::cout << "Выберите действие: ";
+        std::cin >> choice;
 
-int main()
-{
-	f(3) = 12345;
-	cout << gI << " " << f(76543) << " ";
-	cout << f(99999);
-	return 0;
-}
+        switch (choice) {
+        case 1:
+            storage.addAthlete();
+            break;
+        case 2:
+            storage.displayAthletes();
+            break;
+        case 3:
+            std::cout << "Введите имя файла для чтения: ";
+            std::cin >> filename;
+            storage.readFromFile(filename);
+            break;
+        case 4:
+            std::cout << "Введите имя файла для записи: ";
+            std::cin >> filename;
+            storage.writeToFile(filename);
+            break;
+        case 5:
+            storage.clear();
+            std::cout << "Список спортсменов очищен.\n";
+            break;
+        case 0:
+            std::cout << "Выход из программы.\n";
+            break;
+        default:
+            std::cout << "Неверный выбор. Попробуйте снова.\n";
+            break;
+        }
+    } while (choice != 0);
 
-int main0()
-{
-	cout << "main start" << endl;
-	MyClass* pArray = new MyClass[10];
-	auto pObject = f();
-	delete pObject;
-	delete[] pArray;
-	MyClass* p1 = new MyClass(555);
-	MyClass* p2 = new MyClass(666);
-	p2 = p1;
-	delete p1;
-	delete p2;
-	cout << "main end" << endl;
-	return 1;
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
