@@ -19,7 +19,7 @@ void AthleteStorage::addAthlete() {
 // Вывод списка спортсменов на экран
 void AthleteStorage::displayAthletes() const {
     for (size_t i = 0; i < athletes.size(); ++i) {
-        std::cout << "Спортсмен #" << i + 1 << std::endl;
+        std::cout << "Sportsman #" << i + 1 << std::endl;
         athletes[i]->outputToConsole();
         std::cout << std::endl;
     }
@@ -29,7 +29,7 @@ void AthleteStorage::displayAthletes() const {
 void AthleteStorage::readFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Ошибка открытия файла для чтения." << std::endl;
+        std::cerr << "Open file to read wrong." << std::endl;
         return;
     }
 
@@ -53,7 +53,7 @@ void AthleteStorage::readFromFile(const std::string& filename) {
 void AthleteStorage::writeToFile(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Ошибка открытия файла для записи." << std::endl;
+        std::cerr << "Open file to write wrong." << std::endl;
         return;
     }
 

@@ -5,12 +5,12 @@
 #include "AthleteStorage.h"
 
 void showMenu() {
-    std::cout << "1. Добавить спортсмена\n";
-    std::cout << "2. Показать всех спортсменов\n";
-    std::cout << "3. Считать спортсменов из файла\n";
-    std::cout << "4. Записать спортсменов в файл\n";
-    std::cout << "5. Очистить список спортсменов\n";
-    std::cout << "0. Выход\n";
+    std::cout << "1. Add sportsman\n";
+    std::cout << "2. Show all exist sportsmen\n";
+    std::cout << "3. Add sportsmen from file\n";
+    std::cout << "4. Add sportsmen to file\n";
+    std::cout << "5. Clear the list of sportsmen\n";
+    std::cout << "0. Exit\n";
 }
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     do {
         showMenu();
-        std::cout << "Выберите действие: ";
+        std::cout << "Choose action: ";
         std::cin >> choice;
 
         switch (choice) {
@@ -31,24 +31,24 @@ int main() {
             storage.displayAthletes();
             break;
         case 3:
-            std::cout << "Введите имя файла для чтения: ";
+            std::cout << "Enter name of file to read: ";
             std::cin >> filename;
             storage.readFromFile(filename);
             break;
         case 4:
-            std::cout << "Введите имя файла для записи: ";
+            std::cout << "Enter name of file to write: ";
             std::cin >> filename;
             storage.writeToFile(filename);
             break;
         case 5:
             storage.clear();
-            std::cout << "Список спортсменов очищен.\n";
+            std::cout << "List of sportsmen has been cleared.\n";
             break;
         case 0:
-            std::cout << "Выход из программы.\n";
+            std::cout << "Execution...\n";
             break;
         default:
-            std::cout << "Неверный выбор. Попробуйте снова.\n";
+            std::cout << "Wrong choice. Try again...\n";
             break;
         }
     } while (choice != 0);

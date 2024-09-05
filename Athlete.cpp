@@ -10,19 +10,19 @@ Athlete::Athlete(const std::string& name, int age, int medals)
 
 // Чтение атрибутов с консоли
 void Athlete::inputFromConsole() {
-    std::cout << "Введите имя спортсмена: ";
+    std::cout << "Enter sportsman name: ";
     std::cin >> name;
-    std::cout << "Введите возраст спортсмена: ";
+    std::cout << "Enter sportsman age: ";
     std::cin >> age;
-    std::cout << "Введите количество медалей: ";
+    std::cout << "Enter count of medals of the sportsman: ";
     std::cin >> medals;
 }
 
 // Вывод атрибутов на консоль
 void Athlete::outputToConsole() const {
-    std::cout << "Имя спортсмена: " << name << std::endl;
-    std::cout << "Возраст спортсмена: " << age << std::endl;
-    std::cout << "Количество медалей: " << medals << std::endl;
+    std::cout << "Sportsman name: " << name << std::endl;
+    std::cout << "Sportsman age: " << age << std::endl;
+    std::cout << "Count of sportman medals:" << medals << std::endl;
 }
 
 // Чтение из файла
@@ -33,6 +33,4 @@ void Athlete::readFromFile(std::ifstream& in) {
 // Запись в файл
 void Athlete::writeToFile(std::ofstream& out) const {
     out << name << " " << age << " " << medals << std::endl;
-}
-
 }
