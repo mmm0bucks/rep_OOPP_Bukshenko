@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-class Athlete {
+class AthleteBukshenko {
 private:
     std::string name;
     int age;
@@ -14,8 +14,8 @@ private:
     bool isValidMedals(int medals);
 
 public:
-    Athlete();  // Конструктор по умолчанию
-    Athlete(const std::string& name, int age, int medals);
+    AthleteBukshenko();
+    AthleteBukshenko(const std::string& name, int age, int medals);
 
     void inputFromConsole();
     void outputToConsole() const;

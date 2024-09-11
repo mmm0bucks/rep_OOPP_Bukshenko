@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Athlete.cpp">
+    <ClCompile Include="AthleteBukshenko.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AthleteStorage.cpp">
+    <ClCompile Include="AthleteStorageBukshenko.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="L01.cpp">
@@ -26,10 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Athlete.h">
+    <ClInclude Include="AthleteBukshenko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AthleteStorage.h">
+    <ClInclude Include="AthleteStorageBukshenko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

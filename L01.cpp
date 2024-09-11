@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "AthleteStorage.h"
+#include "AthleteStorageBukshenko.h"
 
 void showMenu() {
     std::cout << "1. Add athlete\n";
@@ -11,20 +11,22 @@ void showMenu() {
 }
 
 int main() {
-    AthleteStorage storage;
+    AthleteStorageBukshenko storage;
     int choice;
     std::string filename;
-    //system('chcp 1251');
-  
+
     do {
         showMenu();
         std::cout << "Choose an action: ";
         std::cin >> choice;
 
         switch (choice) {
-        case 1:
-            storage.addAthlete();
+        case 1: {
+            AthleteBukshenko* athlete = new AthleteBukshenko();
+            athlete->inputFromConsole();
+            storage.addAthlete(athlete);
             break;
+        }
         case 2:
             storage.displayAthletes();
             break;
