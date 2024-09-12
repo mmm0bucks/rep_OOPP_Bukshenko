@@ -2,22 +2,23 @@
 #include "AthleteStorageBukshenko.h"
 
 void showMenu() {
-    std::cout << "1. Add athlete\n";
-    std::cout << "2. Display all athletes\n";
-    std::cout << "3. Read athletes from file\n";
-    std::cout << "4. Write athletes to file\n";
-    std::cout << "5. Clear the list of athletes\n";
-    std::cout << "0. Exit\n";
+    std::cout << "1. Добавить атлета\n";
+    std::cout << "2. Показать список атлетов\n";
+    std::cout << "3. Прочитать файл с атлетами\n";
+    std::cout << "4. Записать атлетов в файл\n";
+    std::cout << "5. Очистить список добавленных атлетов\n";
+    std::cout << "0. Выход\n";
 }
 
 int main() {
     AthleteStorageBukshenko storage;
     int choice;
     std::string filename;
+    system("chcp 1251");
 
     do {
         showMenu();
-        std::cout << "Choose an action: ";
+        std::cout << "Выберите действие: ";
         std::cin >> choice;
 
         switch (choice) {
@@ -31,24 +32,24 @@ int main() {
             storage.displayAthletes();
             break;
         case 3:
-            std::cout << "Enter filename for reading: ";
+            std::cout << "Введите файл для чтения: ";
             std::cin >> filename;
             storage.readFromFile(filename);
             break;
         case 4:
-            std::cout << "Enter filename for writing: ";
+            std::cout << "Введите файл для записи: ";
             std::cin >> filename;
             storage.writeToFile(filename);
             break;
         case 5:
             storage.clear();
-            std::cout << "The list of athletes has been cleared.\n";
+            std::cout << "список добавленных атлетов был очищен.\n";
             break;
         case 0:
-            std::cout << "Exiting the program.\n";
+            std::cout << "Выход из программы.\n";
             break;
         default:
-            std::cout << "Invalid choice. Try again.\n";
+            std::cout << "Некорректный выбор. Попробуйте снова.\n";
             break;
         }
     } while (choice != 0);

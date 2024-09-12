@@ -39,27 +39,27 @@ void AthleteBukshenko::inputFromConsole() {
     int inputAge, inputMedals;
 
     do {
-        std::cout << "Enter athlete's name (first and last name separated by space): ";
+        std::cout << "Введите имя атлета (имя и фамилия через пробел): ";
         std::cin.ignore();
         std::getline(std::cin, inputName);
         if (!isValidName(inputName)) {
-            std::cout << "Invalid name. Please enter one or two words.\n";
+            std::cout << "Имя введено некорректно. Пожалуйста введите два слова.\n";
         }
     } while (!isValidName(inputName));
 
     do {
-        std::cout << "Enter athlete's age (non-negative number): ";
+        std::cout << "Введите возраст атлета (положительное число): ";
         std::cin >> inputAge;
         if (!isValidAge(inputAge)) {
-            std::cout << "Age cannot be negative.\n";
+            std::cout << "Возраст не может быть отрицательным.\n";
         }
     } while (!isValidAge(inputAge));
 
     do {
-        std::cout << "Enter number of medals (non-negative number): ";
+        std::cout << "Введите кол-во медалей (Положительное число): ";
         std::cin >> inputMedals;
         if (!isValidMedals(inputMedals)) {
-            std::cout << "Medals cannot be negative.\n";
+            std::cout << "Кол-во медалей введено некорректно.\n";
         }
     } while (!isValidMedals(inputMedals));
 
@@ -70,9 +70,9 @@ void AthleteBukshenko::inputFromConsole() {
 
 // Вывод на консоль
 void AthleteBukshenko::outputToConsole() const {
-    std::cout << "Athlete's name: " << name << std::endl;
-    std::cout << "Athlete's age: " << age << std::endl;
-    std::cout << "Number of medals: " << medals << std::endl;
+    std::cout << "Имя атлета: " << name << std::endl;
+    std::cout << "Возраст атлета: " << age << std::endl;
+    std::cout << "Кол-во медалей атлета: " << medals << std::endl;
 }
 
 // Чтение из файла

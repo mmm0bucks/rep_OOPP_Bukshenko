@@ -19,12 +19,12 @@ void AthleteStorageBukshenko::addAthlete(AthleteBukshenko* athlete) {
 // Вывод списка спортсменов на экран
 void AthleteStorageBukshenko::displayAthletes() const {
     if (athletes.empty()) {
-        std::cout << "No athletes in the list.\n";
+        std::cout << "В списке нет атлетов.\n";
         return;
     }
 
     for (size_t i = 0; i < athletes.size(); ++i) {
-        std::cout << "Athlete #" << i + 1 << std::endl;
+        std::cout << "Атлет #" << i + 1 << std::endl;
         athletes[i]->outputToConsole();
         std::cout << std::endl;
     }
@@ -34,15 +34,15 @@ void AthleteStorageBukshenko::displayAthletes() const {
 void AthleteStorageBukshenko::readFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error opening file for reading: " << filename << std::endl;
+        std::cerr << "Ошибка при открытии файла для чтения: " << filename << std::endl;
         return;
     }
 
-    std::cout << "File opened successfully: " << filename << std::endl;
+    std::cout << "Файл открыт успешно: " << filename << std::endl;
 
     // Проверка на пустоту файла
     if (file.peek() == std::ifstream::traits_type::eof()) {
-        std::cout << "The file is empty, nothing to read." << std::endl;
+        std::cout << "Файл пуст, нет данных для чтения." << std::endl;
         file.close();
         return;
     }
@@ -61,14 +61,14 @@ void AthleteStorageBukshenko::readFromFile(const std::string& filename) {
             int medals = std::stoi(match[3]);
 
             // Отладочное сообщение о считанных данных
-            std::cout << "Read athlete: " << name << ", age: " << age << ", medals: " << medals << std::endl;
+            std::cout << "Атлет: " << name << ", Возраст: " << age << ", Медали: " << medals << std::endl;
 
             // Создание и добавление нового спортсмена
             AthleteBukshenko* newAthlete = new AthleteBukshenko(name, age, medals);
             athletes.push_back(newAthlete);
         }
         else {
-            std::cerr << "Error reading line: " << line << std::endl;
+            std::cerr << "Ошибка при чтении строки: " << line << std::endl;
         }
     }
 
@@ -76,7 +76,7 @@ void AthleteStorageBukshenko::readFromFile(const std::string& filename) {
 
     // Проверка, если спортсмены были считаны, выводим их на экран
     if (athletes.empty()) {
-        std::cout << "No athletes were read from the file." << std::endl;
+        std::cout << "Атлеты не были прочитаны из файла." << std::endl;
     }
     else {
         displayAthletes();
@@ -87,7 +87,7 @@ void AthleteStorageBukshenko::readFromFile(const std::string& filename) {
 void AthleteStorageBukshenko::writeToFile(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error opening file for writing." << std::endl;
+        std::cerr << "Ошибка при открытии файла для записи." << std::endl;
         return;
     }
 
