@@ -24,12 +24,18 @@
     <ClCompile Include="L01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CoachBukshenko.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AthleteBukshenko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AthleteStorageBukshenko.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoachBukshenko.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

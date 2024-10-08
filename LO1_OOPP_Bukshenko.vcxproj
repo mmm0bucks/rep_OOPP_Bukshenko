@@ -67,6 +67,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <ExternalIncludePath>C:\Users\maxim\Downloads\boost_1_86_0;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>C:\Users\maxim\Downloads\boost_1_86_0\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -92,6 +94,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\maxim\Downloads\boost_1_86_0\stage\lib;C:\Users\maxim\Downloads\boost_1_86_0\boost;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -121,11 +124,13 @@
   <ItemGroup>
     <ClCompile Include="AthleteBukshenko.cpp" />
     <ClCompile Include="AthleteStorageBukshenko.cpp" />
+    <ClCompile Include="CoachBukshenko.cpp" />
     <ClCompile Include="L01.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AthleteBukshenko.h" />
     <ClInclude Include="AthleteStorageBukshenko.h" />
+    <ClInclude Include="CoachBukshenko.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

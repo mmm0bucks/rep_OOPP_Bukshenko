@@ -2,23 +2,31 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <boost/serialization/access.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/vector.hpp>
+
 
 class AthleteBukshenko {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive& ar, const unsigned int version) {
+        ar& name& age& medals;
+    }
+
+protected:
     std::string name;
     int age;
     int medals;
 
-    bool isValidName(const std::string& name);
-    bool isValidAge(int age);
-    bool isValidMedals(int medals);
-
 public:
-    AthleteBukshenko();
-    AthleteBukshenko(const std::string& name, int age, int medals);
+    AthleteBukshenko() : name("Unknown"), age(0), medals(0) {}
+    AthleteBukshenko(const std::string& name, int age, int medals) : name(name), age(age), medals(medals) {}
 
-    void inputFromConsole();
-    void outputToConsole() const;
-    void readFromFile(std::ifstream& in);
-    void writeToFile(std::ofstream& out) const;
+    virtual void inputFromConsole(); // Виртуальные функции для полиморфизма
+    virtual void outputToConsole() const;
+
+    virtual ~AthleteBukshenko() = default; // Виртуальный деструктор
 };

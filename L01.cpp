@@ -1,12 +1,16 @@
 ﻿#include <iostream>
 #include "AthleteStorageBukshenko.h"
+#include <boost/serialization/shared_ptr.hpp>
+#include <boost/serialization/vector.hpp>
+
 
 void showMenu() {
     std::cout << "1. Добавить атлета\n";
-    std::cout << "2. Показать список атлетов\n";
-    std::cout << "3. Прочитать файл с атлетами\n";
-    std::cout << "4. Записать атлетов в файл\n";
-    std::cout << "5. Очистить список добавленных атлетов\n";
+    std::cout << "2. Добавить тренера\n";
+    std::cout << "3. Показать список атлетов и тренеров\n";
+    std::cout << "4. Прочитать файл с атлетами и тренерами\n";
+    std::cout << "5. Записать атлетов и тренеров в файл\n";
+    std::cout << "6. Очистить список атлетов и тренеров\n";
     std::cout << "0. Выход\n";
 }
 
@@ -23,27 +27,33 @@ int main() {
 
         switch (choice) {
         case 1: {
-            AthleteBukshenko* athlete = new AthleteBukshenko();
+            std::shared_ptr<AthleteBukshenko> athlete = std::make_shared<AthleteBukshenko>();
             athlete->inputFromConsole();
             storage.addAthlete(athlete);
             break;
         }
-        case 2:
+        case 2: {
+            std::shared_ptr<CoachBukshenko> coach = std::make_shared<CoachBukshenko>();
+            coach->inputFromConsole();
+            storage.addAthlete(coach);
+            break;
+        }
+        case 3:
             storage.displayAthletes();
             break;
-        case 3:
-            std::cout << "Введите файл для чтения: ";
+        case 4:
+            std::cout << "Введите имя файла для чтения: ";
             std::cin >> filename;
             storage.readFromFile(filename);
             break;
-        case 4:
-            std::cout << "Введите файл для записи: ";
+        case 5:
+            std::cout << "Введите имя файла для записи: ";
             std::cin >> filename;
             storage.writeToFile(filename);
             break;
-        case 5:
+        case 6:
             storage.clear();
-            std::cout << "список добавленных атлетов был очищен.\n";
+            std::cout << "Список очищен.\n";
             break;
         case 0:
             std::cout << "Выход из программы.\n";
