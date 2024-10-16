@@ -2,31 +2,35 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/shared_ptr.hpp>
-#include <boost/serialization/vector.hpp>
-
+#include <boost/serialization/serialization.hpp>
+#include <boost/serialization/base_object.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 class AthleteBukshenko {
 private:
-    friend class boost::serialization::access;
+    std::string name;
+    int year;
+    double salary;  
+
+    friend class boost::serialization::access; // Для доступа к приватным полям в процессе сериализации
     template<class Archive>
     void serialize(Archive& ar, const unsigned int version) {
-        ar& name& age& medals;
+        ar& name;
+        ar& year;
+        ar& salary;  
     }
 
-protected:
-    std::string name;
-    int age;
-    int medals;
-
 public:
-    AthleteBukshenko() : name("Unknown"), age(0), medals(0) {}
-    AthleteBukshenko(const std::string& name, int age, int medals) : name(name), age(age), medals(medals) {}
+    AthleteBukshenko();  
+    AthleteBukshenko(const std::string& name, int year, double salary);  
 
-    virtual void inputFromConsole(); // Виртуальные функции для полиморфизма
+    // Виртуальные функции для ввода/вывода
+    virtual void inputFromConsole();
     virtual void outputToConsole() const;
 
-    virtual ~AthleteBukshenko() = default; // Виртуальный деструктор
+    virtual ~AthleteBukshenko() = default; // Виртуальный деструктор для корректного удаления объектов наследников
 };
+
+// Регистрация базового класса для сериализации
+//BOOST_CLASS_EXPORT(AthleteBukshenko)

@@ -1,27 +1,31 @@
 #pragma once
 #include "AthleteBukshenko.h"
+#include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
-#include <boost/serialization/shared_ptr.hpp>
-#include <boost/serialization/vector.hpp>
+#include <boost/serialization/export.hpp>
 
-
-class CoachBukshenko : public AthleteBukshenko {
+class CoachBukshenko : public AthleteBukshenko {  
 private:
+    std::string coachName;  
+    int experience;
+
     friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive& ar, const unsigned int version) {
-        ar& boost::serialization::base_object<AthleteBukshenko>(*this); // Сериализация базового класса
-        ar& team& experience;
+        ar& boost::serialization::base_object<AthleteBukshenko>(*this); 
+        ar& coachName;  
+        ar& experience;
     }
 
-    std::string team;
-    int experience; // Количество лет опыта
-
 public:
-    CoachBukshenko() : AthleteBukshenko(), team("Unknown"), experience(0) {}
-    CoachBukshenko(const std::string& name, int age, int medals, const std::string& team, int experience)
-        : AthleteBukshenko(name, age, medals), team(team), experience(experience) {}
+    CoachBukshenko();  
+    CoachBukshenko(const std::string& athleteName, int athleteYear, double athleteSalary, const std::string& coachName, int experience);  
 
-    void inputFromConsole() override; // Переопределенные виртуальные функции
+    // Переопределение виртуальных функций
+    void inputFromConsole() override;
     void outputToConsole() const override;
+
 };
+
+// Регистрация производного класса для сериализации
+//BOOST_CLASS_EXPORT(CoachBukshenko)  

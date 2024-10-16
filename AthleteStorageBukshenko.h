@@ -1,28 +1,29 @@
 ﻿#pragma once
 #include <vector>
-#include <memory>
-#include "AthleteBukshenko.h"
-#include "CoachBukshenko.h"
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/serialization/shared_ptr.hpp>
+#include <memory>  // Для shared_ptr
 #include <boost/serialization/vector.hpp>
-
+#include "AthleteBukshenko.h"
 
 class AthleteStorageBukshenko {
 private:
-    std::vector<std::shared_ptr<AthleteBukshenko>> athletes; // Контейнер для хранения атлетов и тренеров
+    std::vector<std::shared_ptr<AthleteBukshenko>> athletes;  
 
     friend class boost::serialization::access;
+
+    // Шаблонная функция для сериализации
     template<class Archive>
     void serialize(Archive& ar, const unsigned int version) {
-        ar& athletes;
+        ar& athletes; 
     }
 
 public:
-    void addAthlete(std::shared_ptr<AthleteBukshenko> athlete); // Добавляем атлета или тренера
-    void displayAthletes() const; // Вывод всех атлетов/тренеров
-    void readFromFile(const std::string& filename); // Чтение из файла
-    void writeToFile(const std::string& filename) const; // Запись в файл
-    void clear(); // Очистка контейнера
+    AthleteStorageBukshenko();
+    ~AthleteStorageBukshenko() = default;
+
+    void addAthlete();  
+    void addCoach();    
+    void displayAthletes() const; 
+    void readFromFile(const std::string& filename);
+    void writeToFile(const std::string& filename) const;
+    void clear();
 };
